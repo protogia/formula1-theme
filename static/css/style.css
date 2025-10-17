@@ -15,7 +15,7 @@
 /* Font */
 @font-face {
   font-family: 'Formula1';
-      src: url('{{ "fonts/Formula1-Regular-1.tff" | relURL }}' ) format('truetype');
+      src: url('../fonts/Formula1-Regular-1.ttf') format('truetype');
   font-weight: lighter;
   font-style: normal;
 }
