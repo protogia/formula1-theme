@@ -1,0 +1,363 @@
+/* Colorpalette */
+
+:root {
+  --darkgrey: #15151d;
+  --grey: #525252;
+  --lightgrey: #a09f93;
+  --white: #f2f0ec;
+  --red: #ff1e00;
+  --darkblue: #046E8F;
+  --blue: #0090C1;
+  --lightblue: #38AECC;
+}
+
+
+/* Font */
+@font-face {
+  font-family: 'Formula1';
+      src: url('fonts/Formula1-Regular-1.ttf') format('truetype');
+  font-weight: lighter;
+  font-style: normal;
+}
+
+
+/* General Page Layout */
+
+html {
+  background-color: var(--darkgrey);
+  color: var(--white);
+  line-height: 1.5;
+  font-family: 'Formula1'; /*, 'Source Code Pro', monospace; */
+  font-size: small;
+  font-variant: normal;
+  width: 80%;
+  height: 100%;
+  min-height: 90%;
+}
+
+body {
+  position: absolute; 
+  display: column;
+  flex-direction: column;
+  left: 22%;
+  width: 58%;
+}
+
+header {
+  position: absolute;
+  top: 0;
+  background-color: var(--darkgrey);
+  height: 10%;
+  width: 100%;
+}
+
+header .formula1 {
+  padding: 0;
+  margin: 0;
+  min-width: 100%;
+  width: 100%;
+  max-width: 100%;
+  font-size: larger;
+  font-style: italic;
+}
+
+header .h1 {
+  margin: 0;
+  padding: 0;
+  background-color: var(--darkgrey);
+  min-width: 100%;
+  width: 100%;
+  max-width: 100%;
+}
+
+header .navbar {
+  background-color: var(--darkgrey);
+  display: row;
+  flex-direction: row;
+  width: 100%;
+}
+
+ol {
+  /* list-style-type: none; */
+  margin: 0;
+  padding: 0;
+}
+
+
+ol li {
+  margin-top: 1rem;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 80%;
+  max-width: 80%;
+  height: 5rem;
+}
+
+ul li {
+  margin-right: 1rem;
+}
+
+.nav-item a {
+  position: relative;
+  float: left;
+  display: block;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  width: 10rem;
+  color: var(--white);
+}
+
+a {
+  color: var(--red);
+  text-decoration: none;
+}
+
+/* Typography */
+
+h1 {
+  font-weight: bold;
+}
+
+h2, h3, h4, h5, h6{
+  font-weight: normal;
+  font-style: italic;
+  margin-bottom: 0;
+}
+
+p {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+em {
+  color: var(--red);
+}
+
+pre, code {
+  overflow-y: auto;
+  font-family: inherit;
+  font-size: inherit;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+}
+
+/* 404 Page Layout */
+
+.page-not-found h1 {
+  margin-top: 25rem;
+  text-align: center;
+  font-size: 2em;
+}
+
+
+/* Homepage Layout */
+
+main {
+  padding-bottom: 2rem;
+}
+
+.full-width-image {
+  width: 100%;
+  height: auto;
+}
+
+/* Split the screen in half */
+
+.homepage .split {
+  width: 80%;
+}
+
+.homepage .left {
+  position: absolute;
+  top: 50%;
+}
+
+.homepage .right {
+  position: absolute;
+  top: 50%;
+  right: 0;
+}
+
+.homepage .centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+
+/* Post List Layout */
+
+.article-list {
+  position: relative;
+  top: 10rem;
+}
+
+.article-list h2.headline,
+.article-list h2.headline a {
+  font-size: medium;
+  margin-top: 2rem;
+  padding-bottom: 0.5rem;
+}
+
+.article-list .meta .key {
+  color: var(--lightgrey);
+}
+
+.article-list .meta .val,
+.article-list .meta .val a {
+  color: var(--white)
+}
+
+.single {
+  position: relative;
+  top: 12rem;
+}
+
+.single .headline {
+  padding-bottom: 1rem;
+  font-size: medium;
+}
+
+.single h1, h2, h3, h4, h5, h6 {
+  padding-top: 1rem;
+  padding-bottom: 0.2rem;
+  font-size: medium;
+  color: var(--lightgrey);
+}
+
+.single .key {
+  color: var(--lightgrey)
+}
+
+.single ul {
+  list-style-type: circle;
+  margin: 1rem;
+}
+
+.single p {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.single ital
+
+main time{
+  font-size: medium;
+  color: var(--white)
+}
+
+article.single .body {
+  padding-top: 4rem;
+  padding-bottom: 3rem;
+}
+
+img {
+  display: block; /* Ensures block-level layout */
+  width: 100%;
+  height: auto;
+  margin-top: 3rem; 
+  margin-bottom: 3rem; 
+}
+
+/* code-colors */
+
+pre {background: var(--grey); color: var(--white) }
+.highlight .hll { background-color: var(--darkgrey) }
+
+/* css for mobile-devices and vertical-view */
+@media (max-width: 580px) {
+    
+  /* Typography */
+
+  html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  body {
+    position: absolute; 
+    display: column;
+    flex-direction: column;
+    left: 5%;
+    width: 90%;
+  }
+  
+  header .formula1 h1 {
+    font-size: x-large;
+  }
+
+  main {
+    padding-top: 1rem;
+    margin-left: 0;
+  }
+
+  h1 {
+      font-size: medium;
+      font-weight: lighter;
+      line-height: 1.0;
+  }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+      font-size: medium;
+      font-weight: lighter;
+      line-height: 1.2;
+      margin-bottom: 0;
+  }
+
+  p {
+    font-size: medium;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+
+  .homepage .split {
+      height: 50%;
+  }
+
+
+  .homepage .right {
+      position: absolute;
+  }
+
+  .homepage .centered {
+      position: absolute;
+      top: 0%;
+      left: 0%;
+      text-align: center;
+  }
+
+  /* Articel list */
+
+  .article-list h2 .headline,
+  .article-list h2 .headline a {
+    font-size: medium;
+  }
+  
+  /* single-page-layout */
+
+  .article-list h2.headline a {
+    font-size: medium;
+  }
+
+  ul {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  ul li {
+    margin-bottom: 0.5rem;
+  }
+}

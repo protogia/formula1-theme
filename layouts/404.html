@@ -1,0 +1,27 @@
+{{ $baseurl := .Site.BaseURL }}
+
+<!DOCTYPE html>
+<html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}" style="width: 100%;">
+
+{{ partial "head.html" . }}
+
+  <body>
+
+    {{ partial "header.html" . }}
+
+    <main role="main" class="page-not-found">
+    
+      <h1>
+        <span class="base05">[</span>
+        <span class="base08">4</span>
+        <span class="base09">0</span>
+        <span class="base0a">4</span>
+        <span class="base05">]</span>
+        <span class="base05">not found ...</span>
+      </h1>
+    </main>
+
+    {{ partial "footer.html" . }}
+  </body>
+</html>
+

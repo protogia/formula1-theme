@@ -1,0 +1,27 @@
+<article class="list-item">
+  <div class="split listitemdescription">
+    {{ if (not (isset .Params "redirectlink")) }}
+      <h2 class="headline" itemprop="headline">
+        <a href="{{ .RelPermalink }}"><span style="color: {{ .Params.color }};">{{ .Title }}{{ if .Draft }} (draft){{ end }}</span></a>
+      </h2>
+    {{ else }}
+      <h2 class="headline" itemprop="headline">
+        <a href="{{ .Params.redirectlink }}"><span style="color: {{ .Params.color }};">{{ .Title }}{{ if .Draft }} (draft){{ end }}</span></a>
+      </h2>
+    {{ end }}
+    <span class="meta">
+      {{ if and (not (isset .Params "redirectlink")) (not .Date.IsZero) }}
+        <span class="key">date:</span>
+        <span class="val"><time itemprop="datePublished" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 02, 2006" }}</time></span>
+      {{ else }}
+        <span class="key">info:</span>
+        <span class="val"><time itemprop="datePublished">{{ .Params.info }}</time></span>
+      {{ end }}
+     </span>
+     <br>
+     <br>
+    </div>
+
+  <div class="split listitemvisual">
+  </div>
+</article>
