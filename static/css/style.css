@@ -265,11 +265,6 @@ img {
   margin-bottom: 3rem; 
 }
 
-/* code-colors */
-
-pre {background: var(--grey); color: var(--white) }
-.highlight .hll { background-color: var(--darkgrey) }
-
 /* css for mobile-devices and vertical-view */
 @media (max-width: 580px) {
     
