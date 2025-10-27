@@ -1,0 +1,63 @@
+Matplotlib F1 Dark Theme
+
+Based on the requested Plotly theme with dark background and red accents.
+
+FONT/TEXT STYLES
+
+Set text and font color to white/light grey for visibility on dark background
+
+font.family: Sans Serif, monospace
+text.color: #e6e6e6
+axes.labelcolor: #e6e6e6
+xtick.color: #e6e6e6
+ytick.color: #e6e6e6
+
+COLORS
+
+F1-themed color cycle for plots
+
+axes.prop_cycle: cycler('color', ['#ff3300', '#ffd633', '#ff661a', '#cccccc', '#ff4c33', '#003773', '#00A0DE', '#037A68', '#53FC18', '#AF00AF'])
+
+BACKGROUNDS
+
+Background outside the plot (paper_bgcolor)
+
+figure.facecolor: #15151d
+
+Background of the plotting area (plot_bgcolor)
+
+axes.facecolor: #15151d
+
+AXES AND GRID
+
+Axes edge color (matching axis labels)
+
+axes.edgecolor: #e6e6e6
+
+Grid color (dark grey lines)
+
+grid.color: #333333
+grid.linestyle: --
+grid.alpha: 0.5
+axes.grid: True
+
+TICKS
+
+xtick.major.size: 0
+ytick.major.size: 0
+
+TITLE
+
+Setting title to the F1 primary color (bright red)
+
+axes.titlecolor: #ff3300
+axes.titlesize: 20
+
+LEGEND
+
+Matching the dark legend background and border
+
+legend.facecolor: #1a1a1a
+legend.edgecolor: #ff3300
+legend.frameon: True
+legend.fancybox: True
