@@ -1,0 +1,6 @@
+<details>
+    <summary>{{ .Get "title" | default "Show Code" | markdownify }}</summary>
+    <div class="collapsible-content">
+        {{ .Inner | markdownify }}
+    </div>
+</details>
