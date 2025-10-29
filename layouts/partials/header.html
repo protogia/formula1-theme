@@ -1,26 +1,21 @@
 <header>
-  <a class="path" href="{{ .Site.BaseURL }}" style="text-decoration: none;">
-  <div class="formula1">
-      <h1 class="site-title">
-          <span>PROTOGIA</span>
-      </h1>
-  </a>
+  <div class="header-inner">
+    <a class="path" href="{{ .Site.BaseURL }}" style="text-decoration: none;">
+      <span class="formula1">
+        <h1 class="site-title"><span>Protogia.Engineering</span></h1>
+      </span>
+    </a>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <ul class="navbar-nav mr-auto">
-      {{ $current := . }}
-      {{ range .Site.Menus.main }}
-      {{ $active := or ($current.IsMenuCurrent "main" .) ($current.HasMenuCurrent "main" .) }}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <ul class="navbar-nav mr-auto">
+        {{ range .Site.Menus.main }}
         <li class="nav-item">
-          <a class="nav-link
-          {{ if eq .Name "Projects" }}
-            navbar-item-projects
-          {{ else if eq .Name "Blog" }}
-            navbar-item-blog
-          {{ end }}" href="{{.URL | absURL }}">{{.Name}}</a>
-      {{ end }}
+          <a class="nav-link" href="{{.URL | absURL }}">{{.Name}}</a>
         </li>
-    </ul>
-  </nav>
+        {{ end }}
+      </ul>
+    </nav>
   </div>
 </header>
+
+
