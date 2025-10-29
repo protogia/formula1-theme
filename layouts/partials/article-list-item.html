@@ -2,11 +2,13 @@
   <div class="split listitemdescription">
     {{ if (not (isset .Params "redirectlink")) }}
       <h2 class="headline" itemprop="headline">
-        <a href="{{ .RelPermalink }}"><span style="color: {{ .Params.color }};">{{ .Title }}{{ if .Draft }} (draft){{ end }}</span></a>
+        <!-- <a href="{{ .RelPermalink }}"><span style="color: {{ .Params.color }};">{{ .Title }}{{ if .Draft }} (draft){{ end }}</span></a> -->
+        <a href="{{ .RelPermalink }}"><span>{{ .Title }}{{ if .Draft }} (draft){{ end }}</span></a>
       </h2>
     {{ else }}
       <h2 class="headline" itemprop="headline">
-        <a href="{{ .Params.redirectlink }}"><span style="color: {{ .Params.color }};">{{ .Title }}{{ if .Draft }} (draft){{ end }}</span></a>
+        <!-- <a href="{{ .Params.redirectlink }}"><span style="color: {{ .Params.color }};">{{ .Title }}{{ if .Draft }} (draft){{ end }}</span></a> -->
+        <a href="{{ .Params.redirectlink }}"><span>{{ .Title }}{{ if .Draft }} (draft){{ end }}</span></a>
       </h2>
     {{ end }}
     <span class="meta">
@@ -22,6 +24,6 @@
      <br>
     </div>
 
-  <div class="split listitemvisual">
+  <div class="split listitemvisual" style="background-image: url('{{ .Params.image | default "default/placeholder.jpg" | relURL }}');">
   </div>
 </article>
