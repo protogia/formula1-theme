@@ -1,4 +1,6 @@
-/* Colorpalette */
+/* =========================================================
+   Colorpalette
+========================================================= */
 
 :root {
   --darkgrey: #15151d;
@@ -11,23 +13,26 @@
   --lightblue: #38AECC;
 }
 
+/* =========================================================
+   Font
+========================================================= */
 
-/* Font */
 @font-face {
   font-family: 'Formula1';
-      src: url('../fonts/Formula1-Regular-1.ttf') format('truetype');
+  src: url('../fonts/Formula1-Regular-1.ttf') format('truetype');
   font-weight: lighter;
   font-style: normal;
 }
 
-
-/* General Page Layout */
+/* =========================================================
+   General Page Layout
+========================================================= */
 
 html {
   background-color: var(--darkgrey);
   color: var(--white);
   line-height: 1.5;
-  font-family: 'Formula1'; /*, 'Source Code Pro', monospace; */
+  font-family: 'Formula1';
   font-size: small;
   font-variant: normal;
   width: 80%;
@@ -37,93 +42,106 @@ html {
 
 body {
   position: absolute; 
-  display: column;
+  display: flex;
   flex-direction: column;
   left: 22%;
   width: 58%;
 }
 
+/* =========================================================
+   Header & Navbar
+========================================================= */
+
 header {
   position: absolute;
   top: 0;
-  background-color: var(--darkgrey);
-  height: 10%;
+  left: 0;
   width: 100%;
+  background: var(--darkgrey);
 }
 
-header .formula1 {
+/* inner wrapper matches body offset & width */
+header .header-inner {
+  box-sizing: border-box;
+  margin-left: 0%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4rem;
   padding: 0;
+}
+
+/* logo / title */
+header .formula1 {
   margin: 0;
-  min-width: 100%;
-  width: 100%;
-  max-width: 100%;
-  font-size: larger;
+  padding: 0;
+  color: var(--white);
   font-style: italic;
 }
 
-header .h1 {
+header .site-title {
   margin: 0;
   padding: 0;
-  background-color: var(--darkgrey);
-  min-width: 100%;
-  width: 100%;
-  max-width: 100%;
 }
 
+/* navbar styling */
 header .navbar {
-  background-color: var(--darkgrey);
-  display: row;
-  flex-direction: row;
-  width: 100%;
+  display: flex;
+  align-items: center;
+  background: transparent;
+  padding: 0;
 }
 
-ol {
-  /* list-style-type: none; */
+header .navbar-nav {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 4rem;
+}
+
+header .nav-item {
   margin: 0;
   padding: 0;
 }
 
-
-ol li {
-  margin-top: 1rem;
-}
-
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  width: 80%;
-  max-width: 80%;
-  height: 5rem;
-}
-
-ul li {
-  margin-right: 1rem;
-}
-
-.nav-item a {
-  position: relative;
-  float: left;
-  display: block;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  width: 10rem;
+header .nav-link {
   color: var(--white);
-}
-
-a {
-  color: var(--red);
   text-decoration: none;
+  transition: color 0.2s ease;
 }
 
-/* Typography */
+header .nav-link:hover {
+  color: var(--red);
+}
+
+/* mobile responsive header */
+@media (max-width: 700px) {
+  header .header-inner {
+    margin: 5%;
+    width: 90%;
+    flex-direction: column;
+    gap: 1rem;
+    height: auto;
+  }
+
+  header .navbar-nav {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+}
+
+/* =========================================================
+   Typography
+========================================================= */
 
 h1 {
-  font-weight: bold;
+  font-weight: lighter;
 }
 
-h2, h3, h4, h5, h6{
-  font-weight: normal;
+h1, h2, h3, h4, h5, h6{
+  font-weight: lighter;
   font-style: italic;
   margin-bottom: 0;
 }
@@ -137,24 +155,37 @@ em {
   color: var(--red);
 }
 
+a {
+  color: var(--red);
+  text-decoration: none;
+}
+
+summary {
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+}
+
 pre, code {
   overflow-y: auto;
   font-family: inherit;
   font-size: inherit;
+  padding-top: 1rem;
   padding-bottom: 1rem;
   padding-left: 1rem;
 }
 
-/* 404 Page Layout */
+/* =========================================================
+   404 Page Layout
+========================================================= */
 
 .page-not-found h1 {
   margin-top: 25rem;
   text-align: center;
-  font-size: 2em;
 }
 
-
-/* Homepage Layout */
+/* =========================================================
+   Homepage Layout
+========================================================= */
 
 main {
   padding-bottom: 2rem;
@@ -164,8 +195,6 @@ main {
   width: 100%;
   height: auto;
 }
-
-/* Split the screen in half */
 
 .homepage .split {
   width: 80%;
@@ -190,8 +219,9 @@ main {
   text-align: center;
 }
 
-
-/* Post List Layout */
+/* =========================================================
+   Post List Layout
+========================================================= */
 
 .article-list {
   position: relative;
@@ -202,16 +232,21 @@ main {
 .article-list h2.headline a {
   font-size: medium;
   margin-top: 2rem;
-  padding-bottom: 0.5rem;
+  padding-bottom: 1rem;
+  color: var(--lightblue);
+  transition: color 0.3s ease;
+}
+
+.article-list h2.headline a:hover {
+  color: var(--red);
 }
 
 .article-list .meta .key {
   color: var(--lightgrey);
 }
 
-.article-list .meta .val,
-.article-list .meta .val a {
-  color: var(--white)
+article.list-item{
+  padding-bottom: 2rem;
 }
 
 .single {
@@ -220,11 +255,13 @@ main {
 }
 
 .single .headline {
-  padding-bottom: 1rem;
-  font-size: medium;
+  padding: 0;
+  margin: 0;
+  font-size: large;
+  color: var(--lightblue)
 }
 
-.single h1, h2, h3, h4, h5, h6 {
+.single h2, h3, h4, h5, h6 {
   padding-top: 1rem;
   padding-bottom: 0.2rem;
   font-size: medium;
@@ -241,14 +278,12 @@ main {
 }
 
 .single p {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
-.single ital
-
-main time{
-  font-size: medium;
+main time {
+  font-size: small;
   color: var(--white)
 }
 
@@ -258,18 +293,18 @@ article.single .body {
 }
 
 img {
-  display: block; /* Ensures block-level layout */
+  display: block;
   width: 100%;
   height: auto;
   margin-top: 3rem; 
   margin-bottom: 3rem; 
 }
 
-/* css for mobile-devices and vertical-view */
-@media (max-width: 580px) {
-    
-  /* Typography */
+/* =========================================================
+   Mobile adjustments
+========================================================= */
 
+@media (max-width: 580px) {
   html {
     margin: 0;
     padding: 0;
@@ -293,11 +328,6 @@ img {
     margin-left: 0;
   }
 
-  h1 {
-      font-size: medium;
-      font-weight: lighter;
-      line-height: 1.0;
-  }
 
   h2,
   h3,
@@ -316,11 +346,9 @@ img {
     margin-bottom: 1rem;
   }
 
-
   .homepage .split {
       height: 50%;
   }
-
 
   .homepage .right {
       position: absolute;
@@ -333,15 +361,11 @@ img {
       text-align: center;
   }
 
-  /* Articel list */
-
   .article-list h2 .headline,
   .article-list h2 .headline a {
     font-size: medium;
   }
   
-  /* single-page-layout */
-
   .article-list h2.headline a {
     font-size: medium;
   }
@@ -356,3 +380,41 @@ img {
     margin-bottom: 0.5rem;
   }
 }
+
+/* =========================================================
+   Hugo Code Highlighting Override
+========================================================= */
+
+/* Make sure code highlighting keeps its original theme font */
+.highlight,
+.highlight pre,
+.highlight code,
+pre code,
+.chroma,
+.chroma * {
+  font-family: Consolas, 'Source Code Pro', 'Fira Code', monospace !important;
+  font-size: 0.95rem;
+  font-variant: normal;
+  letter-spacing: 0;
+  color: inherit;
+  background: transparent;
+}
+
+/* Optional: Make code blocks visually distinct from Formula1 text */
+pre {
+  background-color: #0d1117; /* GitHub Dark background */
+  border-radius: 0.4rem;
+  padding: 1rem;
+  overflow-x: auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+/* Inline code (e.g. `code`) */
+p code, li code {
+  background-color: rgba(240, 246, 252, 0.1);
+  color: #c9d1d9;
+  font-family: Consolas, 'Source Code Pro', 'Fira Code', monospace !important;
+  padding: 0.1rem 0.3rem;
+  border-radius: 0.2rem;
+}
+
