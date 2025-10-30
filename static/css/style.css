@@ -35,17 +35,14 @@ html {
   font-family: 'Formula1';
   font-size: small;
   font-variant: normal;
-  width: 80%;
-  height: 100%;
-  min-height: 90%;
 }
 
 body {
   position: absolute; 
   display: flex;
   flex-direction: column;
-  left: 22%;
-  width: 58%;
+  left: 20%;
+  width: 80%;
 }
 
 /* =========================================================
@@ -69,6 +66,7 @@ header .header-inner {
   justify-content: space-between;
   height: 4rem;
   padding: 0;
+  width: 75%;
 }
 
 /* logo / title */
@@ -190,6 +188,51 @@ pre, code {
 main {
   padding-bottom: 2rem;
 }
+
+.single {
+  display: flex;
+}
+
+.content-area {
+  width: 75%;
+}
+
+.toc-area {
+  width: 25%;
+  position: sticky;
+  top: 50px;
+  z-index: 1;
+  
+  align-self: flex-start; /* Prevents it from stretching the full height of the main */
+  max-height: 100vh; /* Limits the height to the viewport */
+  overflow-y: auto; /* Allows the TOC to scroll internally if it's too long */
+}
+
+.toc-area a {
+  color: var(--lightgrey); 
+  transition: color 0.3s ease; /* smooth transition for visual effect */
+}
+
+.toc-area a.active {
+  color: var(--lightblue);
+  font-weight: bold; 
+}
+
+.toc-area ul, li, a {
+  list-style: none;
+  color: var(--lightgrey);
+}
+
+.toc-area ul, li, a {
+  list-style: none;
+  color: var(--lightgrey);
+  transition: color 0.3s ease;
+}
+
+.toc-area ul, li, a:hover {
+  color: var(--red)
+}
+
 
 .full-width-image {
   width: 100%;
@@ -327,7 +370,6 @@ img {
     padding-top: 1rem;
     margin-left: 0;
   }
-
 
   h2,
   h3,
