@@ -3,6 +3,7 @@
 ========================================================= */
 
 :root {
+  --codinggrey: #0d1117;
   --darkgrey: #15151d;
   --grey: #525252;
   --lightgrey: #a09f93;
@@ -341,6 +342,17 @@ img {
   height: auto;
   margin-top: 3rem; 
   margin-bottom: 3rem; 
+}
+
+table {
+  width: 100%;
+  height: auto;
+  border-radius: .4rem;
+  background-color: var(--codinggrey);
+  font-family: Consolas, 'Source Code Pro', 'Fira Code', monospace !important;
+  font-size: 0.95rem;
+  font-variant: normal;
+  letter-spacing: 0;
 }
 
 /* =========================================================
