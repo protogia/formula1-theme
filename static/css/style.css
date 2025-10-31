@@ -89,6 +89,7 @@ header .navbar {
   align-items: center;
   background: transparent;
   padding: 0;
+  margin-left: 5%;
 }
 
 header .navbar-nav {
@@ -195,11 +196,13 @@ main {
 }
 
 .content-area {
-  width: 75%;
+  flex-grow: 1; /* Allows it to take up available space */
+  flex-basis: 75%; /* Set a base width on desktop */
 }
 
 .toc-area {
-  width: 25%;
+  flex-grow: 0;
+  flex-basis: 25%; /* Set a base width on desktop */
   position: sticky;
   top: 50px;
   z-index: 1;
@@ -370,8 +373,8 @@ table {
     position: absolute; 
     display: column;
     flex-direction: column;
-    left: 5%;
-    width: 90%;
+    left: 2%;
+    width: 92%;
   }
   
   header .formula1 h1 {
@@ -381,6 +384,14 @@ table {
   main {
     padding-top: 1rem;
     margin-left: 0;
+  }
+
+  .content-area {
+    width: 90%;
+  }
+
+  .toc-area {
+    display: none;
   }
 
   h2,
