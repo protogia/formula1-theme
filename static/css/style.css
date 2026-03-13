@@ -625,3 +625,21 @@ input:checked + .slider { background-color: var(--lightblue); }
 input:checked + .slider:before { transform: translateX(16px); }
 
 @media (max-width: 950px) { .content-area { max-width: 100%; } }
+
+
+/*MERMAID*/
+.mermaid {
+  background-color: var(--codinggrey);
+  border-radius: 0.4rem;
+  padding: 2rem;
+  margin: 2rem 0;
+  
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+}
+
+.mermaid svg {
+  margin: 0 auto;
+  display: block;
+}

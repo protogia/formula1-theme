@@ -1,0 +1,35 @@
+<div class="mermaid">
+  {{- trim .Inner "\n" | safeHTML -}}
+</div>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'base',
+    fontFamily: 'Formula1',
+    themeVariables: {
+      lineColor: '#ff1e00',          // --red
+      primaryTextColor: '#f2f0ec',   // --white
+      mainBkg: '#0d1117',            // --codinggrey
+    
+           // Backgrounds
+      primaryColor: '#38AECC',       // --lightblue (Nodes)
+      primaryTextColor: '#f2f0ec',   // --white
+      primaryBorderColor: '#a09f93', // --lightgrey
+      
+      lineColor: '#ff1e00',          // --red (The "Racing Line")
+      secondaryColor: '#046E8F',     // --darkblue
+      tertiaryColor: '#15151d',      // --darkgrey
+      
+      // Canvas colors
+      mainBkg: '#0d1117',            // --codinggrey
+      nodeBorder: '#a09f93',
+      
+      // State/Sequence specific
+      signalColor: '#ff1e00',
+      noteBkgColor: '#525252',       // --grey
+      noteTextColor: '#f2f0ec',
+    } 
+  });
+</script>
