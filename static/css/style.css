@@ -116,7 +116,38 @@ header .nav-link:hover {
 }
 
 /* mobile responsive header */
-@media (max-width: 700px) {
+@media (max-width: 950px) {
+  html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  body {
+    position: absolute; 
+    display: column;
+    flex-direction: column;
+    left: 2%;
+    width: 92%;
+  }
+  
+  header .formula1 h1 {
+    font-size: x-large;
+  }
+
+  main {
+    padding-top: 1rem;
+    margin-left: 0;
+  }
+
+  .content-area {
+    width: 90%;
+  }
+
+  .toc-area {
+    display: none;
+  }
+
   header .header-inner {
     margin: 5%;
     width: 90%;
@@ -362,6 +393,7 @@ table {
    Mobile adjustments
 ========================================================= */
 
+
 @media (max-width: 580px) {
   html {
     margin: 0;
@@ -483,3 +515,113 @@ p code, li code {
   border-radius: 0.2rem;
 }
 
+/* =========================================================
+   Code Toggle Switch (Custom Theme Integration)
+========================================================= */
+
+.master-code-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Formula1';
+  font-size: 0.7rem; /* Smaller to not distract from title */
+  font-style: normal;
+  color: var(--lightgrey);
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 18px;
+}
+
+.switch input { opacity: 0; width: 0; height: 0; }
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: var(--grey);
+  transition: .4s;
+  border-radius: 20px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 12px; width: 12px;
+  left: 3px; bottom: 3px;
+  background-color: var(--white);
+  transition: .4s;
+  border-radius: 50%;
+}
+
+/* =========================================================
+   Master Toggle Logic
+========================================================= */
+
+/* When the body has this class, hide all details tags entirely */
+.no-code-allowed details {
+  display: none !important;
+}
+
+/* Fix for layout stretching: 
+   Ensures the content area never grows wider than its flex-basis 
+   even if code blocks have very long lines. */
+.content-area {
+  overflow-x: hidden;
+}
+
+/* Prevent code tables and pre tags from pushing the container out */
+pre, table {
+  max-width: 100%;
+  overflow-x: auto;
+  display: block; 
+}
+
+/* =========================================================
+   Toggle Switch Styling 
+========================================================= */
+
+/* Layout Safety: Prevent code from stretching the page */
+.content-area {
+  overflow-x: hidden;
+}
+
+pre, table {
+  max-width: 100%;
+  overflow-x: auto;
+  display: block; 
+}
+
+/* Logic: When toggle is OFF, hide details and their associated headings */
+.no-code-allowed details,
+.no-code-allowed .hidden-code-heading {
+  display: none !important;
+}
+
+/* Toggle Styling (Formula1 Theme) */
+.master-code-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Formula1';
+  font-size: 0.7rem;
+  color: var(--lightgrey);
+}
+
+.switch { position: relative; display: inline-block; width: 34px; height: 18px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider {
+  position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+  background-color: var(--grey); transition: .4s; border-radius: 20px;
+}
+.slider:before {
+  position: absolute; content: ""; height: 12px; width: 12px;
+  left: 3px; bottom: 3px; background-color: var(--white); transition: .4s; border-radius: 50%;
+}
+input:checked + .slider { background-color: var(--lightblue); }
+input:checked + .slider:before { transform: translateX(16px); }
+
+@media (max-width: 950px) { .content-area { max-width: 100%; } }

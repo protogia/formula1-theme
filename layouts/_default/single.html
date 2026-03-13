@@ -11,13 +11,18 @@
     <main role="main" class="single">
       <div class="content-area">
         <span class="meta">
-        <h2 class="headline">
-          <!-- <span style="color: {{ .Params.color }};"> -->
-          <span>
-          {{ .Title }}{{ if .Draft }} (draft){{ end }}
-          </span>
+        <h2 class="headline" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+          <span>{{ .Title }}{{ if .Draft }} (draft){{ end }}</span>
+
+          <div class="master-code-toggle">
+            <span class="toggle-label">Show Code Options</span>
+            <label class="switch">
+              <input type="checkbox" id="code-master-toggle" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
         </h2>
-          
+                
         <span class="meta">
           {{ if not .Date.IsZero }}
           <span class="key">date:</span>
@@ -34,6 +39,56 @@
       </div>
     </main>
 
+    <!-- <div id="rotate-device-overlay">
+    <p>Please rotate your device horizontally for the best reading experience.</p>
+    </div> -->
+
     {{ partial "footer.html" . }}
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const toggle = document.getElementById('code-master-toggle');
+        const contentArea = document.querySelector('.content-area');
+
+        // 1. Identify headings followed immediately by code
+        const headings = contentArea.querySelectorAll('h1, h2, h3, h4, h5, h6');
+        headings.forEach(h => {
+          let nextEl = h.nextElementSibling;
+          if (nextEl && nextEl.tagName === 'DETAILS') {
+            h.classList.add('hidden-code-heading');
+          }
+        });
+
+        // 2. Logic to toggle visibility AND expansion
+        function updateCodeVisibility() {
+          const allDetails = contentArea.querySelectorAll('details');
+          
+          if (toggle.checked) {
+            // SHOW: Remove the hiding class
+            contentArea.classList.remove('no-code-allowed');
+            
+            // EXPAND: Open all details blocks
+            allDetails.forEach(detail => {
+              detail.setAttribute('open', 'true');
+            });
+          } else {
+            // HIDE: Add the hiding class (hides code + tagged headings)
+            contentArea.classList.add('no-code-allowed');
+            
+            // OPTIONAL: Collapse them when hidden so they are 'closed' 
+            // if the user turns the switch back on later.
+            allDetails.forEach(detail => {
+              detail.removeAttribute('open');
+            });
+          }
+        }
+
+        // Run on load
+        updateCodeVisibility();
+
+        // Run on toggle change
+        toggle.addEventListener('change', updateCodeVisibility);
+      });
+    </script>
   </body>
 </html>
