@@ -1,0 +1,31 @@
+{{ $baseurl := .Site.BaseURL }}
+
+<!DOCTYPE html>
+
+{{ partial "head.html" . }}
+
+  <body>
+
+  {{ partial "header.html" . }}
+
+
+    <main role="main" class="single">
+      <div class="content-area">
+        {{ range .Pages.ByDate }}
+          <span class="meta">
+          <h2 class="headline">
+            <span>{{ .Title }}{{ if .Draft }} (draft){{ end }}</span>
+          </h2>
+          </span>
+
+          {{ .Content }}
+        {{ end }}
+      </div>
+      <div class="toc-area">
+        <!-- {{ .TableOfContents }} -->
+      </div>
+    </main>
+
+  {{ partial "footer.html" . }}
+  </body>
+</html>

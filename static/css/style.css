@@ -218,6 +218,26 @@ pre, code {
    Homepage Layout
 ========================================================= */
 
+.about-this-blog {
+  position: relative;
+  top: 10rem;
+  padding-bottom: 4rem;
+}
+
+@media (max-width: 950px) {
+  .about-this-blog {
+    padding-top: 10rem;
+    padding-bottom: 2rem;
+  }
+}
+
+@media (max-width: 580px) {
+  .about-this-blog {
+    padding-top: 10rem;
+    padding-bottom: 2rem;
+  }
+}
+
 main {
   padding-bottom: 2rem;
 }
@@ -438,7 +458,7 @@ table {
   }
 
   p {
-    font-size: medium;
+    font-size: small;
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
