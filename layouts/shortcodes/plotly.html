@@ -1,20 +1,37 @@
-{{ $json := .Get "json" }}
-{{ $height := .Get "height" | default "400px" }}
-<div id="{{$json}}" class="plotly" style="height:{{$height}}"></div>
+{{- $json := .Get "json" | relURL -}}
+{{- $height := .Get "height" | default "400px" -}}
+{{/* Create a unique, JS-safe ID by removing slashes and dots */}}
+{{- $id := .Get "json" | anchorize | safeJS -}}
+
+<div id="{{ $id }}" class="plotly" style="height:{{ $height }}; width:100%;"></div>
+
 <script>
-async function loadPlotly() {
-    try {
-        const response = await fetch('{{$json}}');
-        const fig = await response.json();
-        var layout = fig.layout || {};
-        layout['modebar'] = {
-            orientation: 'h'
-        };
-        layout['margin'] = {l: 0, r: 0, t: 40, b: 40};
-        Plotly.newPlot('{{$json}}', fig.data, layout, {displaylogo: false, responsive: true});
-    } catch (error) {
-        console.error('Error loading plotly json:', error);
+(function() {
+    const renderPlot = async () => {
+        // Wait for Plotly to be available in case the script is loaded async
+        if (typeof Plotly === 'undefined') {
+            console.warn("Plotly library not loaded yet. Retrying...");
+            setTimeout(renderPlot, 100);
+            return;
+        }
+
+        try {
+            const response = await fetch('{{ $json | safeJS }}');
+            const fig = await response.json();
+            const layout = fig.layout || {};
+            layout['responsive'] = true;
+            
+            Plotly.newPlot('{{ $id }}', fig.data, layout, {displaylogo: false, responsive: true});
+        } catch (e) {
+            console.error("Plotly Error:", e);
+        }
+    };
+
+    // Run if document is already loaded, otherwise wait for window load
+    if (document.readyState === 'complete') {
+        renderPlot();
+    } else {
+        window.addEventListener('load', renderPlot);
     }
-}
-loadPlotly();
+})();
 </script>

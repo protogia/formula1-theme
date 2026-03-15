@@ -12,14 +12,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/css/style.css" type="text/css">
     {{ if eq .Params.Plotly true }}
-    <script src="https://cdn.plot.ly/plotly-3.1.2.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-3.1.2.min.js" defer></script>
+    {{- end }}
+
     <!-- <script src="js/toc.js"></script> -->
     <style>
         svg {
             display: inherit;
         }
     </style>
-    {{- end }}
     <!-- <link rel="stylesheet" href="/css/f1-syntax.css" type="text/css"> -->
     <title>{{ with .Title }}{{.}} - {{ end }}{{ .Site.Title }}</title>
 </head>
