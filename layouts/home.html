@@ -9,6 +9,12 @@
 
         {{ partial "header.html" . }}
         
+        <!-- <section class="about-this-blog">
+            {{ with .Site.GetPage .Site.Params.aboutSection }}
+                {{ .Content }}
+            {{ end }}
+        </section> -->
+
         <main role="main" class="article-list">
             {{ range where .Site.Pages "Section" "in" (slice "blog" "projects") }}
                 {{ if not .IsNode }}
