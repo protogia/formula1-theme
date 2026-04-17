@@ -1,8 +1,10 @@
-/* Formula 1 Dark Syntax Theme — Inspired by F1.com UI */
+/* Formula Dark Syntax Theme */
+
+@import "variables.css";
 
 pre, code {
-  background-color: #0d0d0f !important;
-  color: #f0f0f0 !important;
+  background-color: var(--code-bg) !important;
+  color: var(--text) !important;
   font-family: "Fira Code", "JetBrains Mono", monospace;
   font-size: 0.95rem;
   line-height: 1.45;
