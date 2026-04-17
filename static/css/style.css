@@ -2,17 +2,7 @@
    Colorpalette
 ========================================================= */
 
-:root {
-  --codinggrey: #0d1117;
-  --darkgrey: #15151d;
-  --grey: #525252;
-  --lightgrey: #a09f93;
-  --white: #f2f0ec;
-  --red: #ff1e00;
-  --darkblue: #046E8F;
-  --blue: #0090C1;
-  --lightblue: #38AECC;
-}
+@import "variables.css";
 
 /* =========================================================
    Font
@@ -30,8 +20,8 @@
 ========================================================= */
 
 html {
-  background-color: var(--darkgrey);
-  color: var(--white);
+  background-color: var(--bg);
+  color: var(--text);
   line-height: 1.5;
   font-family: 'Formula1';
   font-size: small;
@@ -55,7 +45,7 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  background: var(--darkgrey);
+  background: var(--bg);
 }
 
 /* inner wrapper matches body offset & width */
@@ -74,7 +64,7 @@ header .header-inner {
 header .formula1 {
   margin: 0;
   padding: 0;
-  color: var(--white);
+  color: var(--text);
   font-style: italic;
 }
 
@@ -106,13 +96,13 @@ header .nav-item {
 }
 
 header .nav-link {
-  color: var(--white);
+  color: var(--text);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 header .nav-link:hover {
-  color: var(--red);
+  color: var(--accent);
 }
 
 /* mobile responsive header */
@@ -183,11 +173,11 @@ p {
 }
 
 em {
-  color: var(--red);
+  color: var(--accent);
 }
 
 a {
-  color: var(--red);
+  color: var(--accent);
   text-decoration: none;
 }
 
@@ -264,28 +254,28 @@ main {
 }
 
 .toc-area a {
-  color: var(--lightgrey); 
+  color: var(--h2); 
   transition: color 0.3s ease; /* smooth transition for visual effect */
 }
 
 .toc-area a.active {
-  color: var(--lightblue);
+  color: var(--h1);
   font-weight: bold; 
 }
 
 .toc-area ul, li, a {
   list-style: none;
-  color: var(--lightgrey);
+  color: var(--h2);
 }
 
 .toc-area ul, li, a {
   list-style: none;
-  color: var(--lightgrey);
+  color: var(--h2);
   transition: color 0.3s ease;
 }
 
 .toc-area ul, li, a:hover {
-  color: var(--red)
+  color: var(--accent)
 }
 
 
@@ -331,16 +321,16 @@ main {
   font-size: medium;
   margin-top: 2rem;
   padding-bottom: 1rem;
-  color: var(--lightblue);
+  color: var(--h1);
   transition: color 0.3s ease;
 }
 
 .article-list h2.headline a:hover {
-  color: var(--red);
+  color: var(--accent);
 }
 
 .article-list .meta .key {
-  color: var(--lightgrey);
+  color: var(--h2);
 }
 
 article.list-item{
@@ -356,18 +346,18 @@ article.list-item{
   padding: 0;
   margin: 0;
   font-size: large;
-  color: var(--lightblue)
+  color: var(--h1)
 }
 
 .single h2, h3, h4, h5, h6 {
   padding-top: 1rem;
   padding-bottom: 0.2rem;
   font-size: medium;
-  color: var(--lightgrey);
+  color: var(--h2);
 }
 
 .single .key {
-  color: var(--lightgrey)
+  color: var(--h2)
 }
 
 .single ul {
@@ -382,7 +372,7 @@ article.list-item{
 
 main time {
   font-size: small;
-  color: var(--white)
+  color: var(--text)
 }
 
 article.single .body {
@@ -402,7 +392,7 @@ table {
   width: 100%;
   height: auto;
   border-radius: .4rem;
-  background-color: var(--codinggrey);
+  background-color: var(--coding);
   font-family: Consolas, 'Source Code Pro', 'Fira Code', monospace !important;
   font-size: 0.95rem;
   font-variant: normal;
@@ -519,7 +509,7 @@ pre code,
 
 /* Optional: Make code blocks visually distinct from Formula1 text */
 pre {
-  background-color: #0d1117; /* GitHub Dark background */
+  background-color: var(--coding); /* GitHub Dark background */
   border-radius: 0.4rem;
   padding: 1rem;
   overflow-x: auto;
@@ -546,7 +536,7 @@ p code, li code {
   font-family: 'Formula1';
   font-size: 0.7rem; /* Smaller to not distract from title */
   font-style: normal;
-  color: var(--lightgrey);
+  color: var(--h2);
 }
 
 .switch {
@@ -562,7 +552,7 @@ p code, li code {
   position: absolute;
   cursor: pointer;
   top: 0; left: 0; right: 0; bottom: 0;
-  background-color: var(--grey);
+  background-color: var(--h2);
   transition: .4s;
   border-radius: 20px;
 }
@@ -572,7 +562,7 @@ p code, li code {
   content: "";
   height: 12px; width: 12px;
   left: 3px; bottom: 3px;
-  background-color: var(--white);
+  background-color: var(--text);
   transition: .4s;
   border-radius: 50%;
 }
@@ -628,20 +618,20 @@ pre, table {
   gap: 10px;
   font-family: 'Formula1';
   font-size: 0.7rem;
-  color: var(--lightgrey);
+  color: var(--h2);
 }
 
 .switch { position: relative; display: inline-block; width: 34px; height: 18px; }
 .switch input { opacity: 0; width: 0; height: 0; }
 .slider {
   position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
-  background-color: var(--grey); transition: .4s; border-radius: 20px;
+  background-color: var(--h2); transition: .4s; border-radius: 20px;
 }
 .slider:before {
   position: absolute; content: ""; height: 12px; width: 12px;
-  left: 3px; bottom: 3px; background-color: var(--white); transition: .4s; border-radius: 50%;
+  left: 3px; bottom: 3px; background-color: var(--text); transition: .4s; border-radius: 50%;
 }
-input:checked + .slider { background-color: var(--lightblue); }
+input:checked + .slider { background-color: var(--h1); }
 input:checked + .slider:before { transform: translateX(16px); }
 
 @media (max-width: 950px) { .content-area { max-width: 100%; } }
@@ -649,7 +639,7 @@ input:checked + .slider:before { transform: translateX(16px); }
 
 /*MERMAID*/
 .mermaid {
-  background-color: var(--codinggrey);
+  background-color: var(--coding);
   border-radius: 0.4rem;
   padding: 2rem;
   margin: 2rem 0;
