@@ -263,7 +263,9 @@ main {
   font-weight: bold; 
 }
 
-.toc-area ul, li, a {
+.toc-area ul, 
+.toc-area li, 
+.toc-area a {
   list-style: none;
   color: var(--h2);
 }
@@ -360,11 +362,21 @@ article.list-item{
   color: var(--h2)
 }
 
-.single ul {
-  list-style-type: circle;
-  margin: 1rem;
+.single ol {
+  list-style-type: decimal !important; 
+  display: block;                  
 }
 
+.single ul {
+  list-style-type: square !important; 
+  display: block;                  
+}
+
+.single li {
+  display: list-item;              /* force browser to render bullet marker */
+  list-style: inherit;
+  margin-bottom: 0.5rem;
+}
 .single p {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
