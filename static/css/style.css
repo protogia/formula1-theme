@@ -270,11 +270,6 @@ main {
   color: var(--h2);
 }
 
-.toc-area ul, li, a {
-  list-style: none;
-  color: var(--h2);
-  transition: color 0.3s ease;
-}
 
 .toc-area ul, li, a:hover {
   color: var(--accent)
@@ -418,85 +413,43 @@ table {
 
 @media (max-width: 580px) {
   html {
-    margin: 0;
-    padding: 0;
     width: 100%;
+    overflow-x: hidden; /* Prevent horizontal shake */
   }
 
   body {
-    position: absolute; 
-    display: column;
-    flex-direction: column;
-    left: 2%;
+    position: relative; /* Changed from absolute to relative */
+    display: block;    /* Simplified from flex */
+    margin: 0 auto;
+    padding: 0 4%;
     width: 92%;
+    left: 0;           /* Reset the left 20% from desktop */
   }
   
-  header .formula1 h1 {
-    font-size: x-large;
+  header .header-inner {
+    margin: 5% 0;
+    width: 100%;
   }
 
-  main {
-    padding-top: 1rem;
-    margin-left: 0;
-  }
-
+  /* Ensure the content area doesn't swallow code blocks */
   .content-area {
-    width: 90%;
+    width: 100%;
+    display: block;
+    overflow-x: visible; 
   }
 
-  .toc-area {
-    display: none;
+  /* This was turning EVERY list into a flexbox, which breaks code markers */
+  .single ul {
+    display: block; 
+    padding-left: 20px;
   }
 
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-      font-size: medium;
-      font-weight: lighter;
-      line-height: 1.2;
-      margin-bottom: 0;
-  }
-
-  p {
-    font-size: small;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  .homepage .split {
-      height: 50%;
-  }
-
-  .homepage .right {
-      position: absolute;
-  }
-
-  .homepage .centered {
-      position: absolute;
-      top: 0%;
-      left: 0%;
-      text-align: center;
-  }
-
-  .article-list h2 .headline,
-  .article-list h2 .headline a {
-    font-size: medium;
-  }
-  
-  .article-list h2.headline a {
-    font-size: medium;
-  }
-
-  ul {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  ul li {
-    margin-bottom: 0.5rem;
+  pre {
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto !important; /* Force the scrollbar */
+    display: block;
+    white-space: pre; /* Keep code on one line to trigger scroll */
   }
 }
 
@@ -516,10 +469,8 @@ pre code,
   font-variant: normal;
   letter-spacing: 0;
   color: inherit;
-  background: transparent;
 }
 
-/* Optional: Make code blocks visually distinct from Formula1 text */
 pre {
   background-color: var(--coding); /* GitHub Dark background */
   border-radius: 0.4rem;
