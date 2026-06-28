@@ -14,6 +14,14 @@
         <h2 class="headline" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
           <span>{{ .Title }}{{ if .Draft }} (draft){{ end }}</span>
 
+          {{ if .Params.colab_url }}
+          <div>
+          <a target="_blank" href={{ .Params.colab_url }}>
+            <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+          </a>
+          </div>
+         {{ end }}
+
           {{ if .Params.code_options }}
           <div class="master-code-toggle">
             <span class="toggle-label">Show Code Options</span>
@@ -31,9 +39,11 @@
           <span class="val"><time itemprop="datePublished" datetime={{ .Date.Format " 2006-01-02" }}>{{ .Date.Format "January 02, 2006" }}</time></span>
           {{ end }}
         </span>
-        <br>
-        <br>
+
         
+        <br>
+        <br>
+
         {{ .Content }}
       </div>
       <div class="toc-area">
