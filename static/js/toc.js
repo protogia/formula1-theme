@@ -1,4 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Safe handling of the toggle button
+    const toggleBtn = document.getElementById('toggle-code-btn');
+    
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+            console.log("Toggle clicked!"); //debug
+        });
+    }
+
     const tocLinks = document.querySelectorAll('.toc-area a');
     const sections = document.querySelectorAll('.content-area h2, .content-area h3, .content-area h4');
     

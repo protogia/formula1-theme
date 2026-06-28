@@ -14,6 +14,7 @@
         <h2 class="headline" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
           <span>{{ .Title }}{{ if .Draft }} (draft){{ end }}</span>
 
+          {{ if .Params.code_options }}
           <div class="master-code-toggle">
             <span class="toggle-label">Show Code Options</span>
             <label class="switch">
@@ -21,6 +22,7 @@
               <span class="slider"></span>
             </label>
           </div>
+          {{ end }}
         </h2>
                 
         <span class="meta">
