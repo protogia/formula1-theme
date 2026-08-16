@@ -3,12 +3,12 @@
 {{/* Create a unique, JS-safe ID by removing slashes and dots */}}
 {{- $id := .Get "json" | anchorize | safeJS -}}
 
-<div id="{{ $id }}" class="plotly" style="height:{{ $height }}; width:100%;"></div>
+<!-- Change 1: Use min-height so JS can grow the container if needed -->
+<div id="{{ $id }}" class="plotly" style="min-height:{{ $height }}; width:100%;"></div>
 
 <script>
 (function() {
     const renderPlot = async () => {
-        // Wait for Plotly to be available in case the script is loaded async
         if (typeof Plotly === 'undefined') {
             console.warn("Plotly library not loaded yet. Retrying...");
             setTimeout(renderPlot, 100);
@@ -21,13 +21,19 @@
             const layout = fig.layout || {};
             layout['responsive'] = true;
             
-            Plotly.newPlot('{{ $id }}', fig.data, layout, {displaylogo: false, responsive: true});
+            const container = document.getElementById('{{ $id }}');
+
+            // Change 2: Sync container height with layout height from JSON if defined
+            if (layout.height) {
+                container.style.height = layout.height + 'px';
+            }
+
+            Plotly.newPlot(container, fig.data, layout, {displaylogo: false, responsive: true});
         } catch (e) {
             console.error("Plotly Error:", e);
         }
     };
 
-    // Run if document is already loaded, otherwise wait for window load
     if (document.readyState === 'complete') {
         renderPlot();
     } else {
