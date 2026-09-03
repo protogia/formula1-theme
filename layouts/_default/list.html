@@ -1,19 +1,33 @@
 {{ $baseurl := .Site.BaseURL }}
 
+{{ $items := slice }}
+{{ range .Pages.ByDate }}
+  {{ $url := .Params.redirectlink | default .RelPermalink }}
+  {{ $items = $items | append (dict
+      "title" .Title
+      "url" $url
+      "date" (.Date.Format "2006-01-02")
+      "words" .WordCount
+  ) }}
+{{ end }}
+
 <!DOCTYPE html>
 
 {{ partial "head.html" . }}
+
+  <script src="https://cdn.plot.ly/plotly-3.1.2.min.js" defer></script>
 
   <body>
 
   {{ partial "header.html" . }}
 
   <main role="main" class="article-list">
-    {{ range .Pages }}
-      {{ partial "article-list-item.html" . }}
-    {{ end }}
+    <div id="article-timeline" class="timeline-section"></div>
+    <script type="application/json" id="timeline-data">{{ $items | jsonify | safeJS }}</script>
   </main>
 
   {{ partial "footer.html" . }}
+
+  <script src="{{ "js/article-timeline.js" | relURL }}" defer></script>
   </body>
 </html>
