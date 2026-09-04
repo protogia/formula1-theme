@@ -29,11 +29,11 @@ html {
 }
 
 body {
-  position: absolute; 
+  position: absolute;
   display: flex;
   flex-direction: column;
-  left: 20%;
-  width: 80%;
+  left: 18%;
+  width: 82%;
 }
 
 /* =========================================================
@@ -57,7 +57,7 @@ header .header-inner {
   justify-content: space-between;
   height: 4rem;
   padding: 0;
-  width: 75%;
+  width: 77%;
 }
 
 /* logo / title */
@@ -77,22 +77,46 @@ header .site-title {
 .social-badges {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.75rem;
 }
 
 .social-badges .badge {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.2rem;
-  height: 2.2rem;
+  width: 2.8rem;
+  height: 2.8rem;
   color: var(--text);
-  transition: color 0.2s ease, transform 0.2s ease;
+  transition: color 0.2s ease;
+}
+
+.social-badges .badge svg {
+  width: 28px;
+  height: 28px;
 }
 
 .social-badges .badge:hover {
   color: var(--accent);
-  transform: translateY(-2px);
+}
+
+/* Q&A badge: white question mark on a colored circle, instead of the
+   currentColor-only treatment the GitHub/LinkedIn badges use */
+.social-badges .badge-qa {
+  color: #fff;
+  background-color: var(--h1);
+  border-radius: 50%;
+  width: 2.3rem;
+  height: 2.3rem;
+}
+
+.social-badges .badge-qa svg {
+  width: 20px;
+  height: 20px;
+}
+
+.social-badges .badge-qa:hover {
+  color: #fff;
+  background-color: var(--accent);
 }
 
 /* mobile responsive header */
@@ -194,26 +218,17 @@ pre, code {
 
 .landing {
   position: relative;
-  top: 10rem;
+  top: 4.5rem; /* matches .single's top offset, so the shared timeline chart
+                  lands in the same spot when a bubble click navigates there */
 }
 
-/* same right-hand gutter cascade as .content-area/.toc-area on article pages: 75% -> 90% -> 100% */
-.graph-section,
+/* same right-hand gutter cascade as .content-area/.toc-area on article pages:
+   77% -> 90% -> 100%. Scoped to .landing's own children (rather than baked
+   into .article-timeline-mini itself) because that class is reused as-is
+   inside .content-area on article pages, which already has this same width. */
+.landing > .article-timeline-mini,
 .about-this-blog {
-  width: 75%;
-}
-
-.graph-section {
-  position: relative;
-  min-height: 34rem;
-  border-radius: 0.4rem;
-}
-
-.graph-section svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-  min-height: 34rem;
+  width: 77%;
 }
 
 .about-this-blog {
@@ -223,14 +238,9 @@ pre, code {
 }
 
 @media (max-width: 950px) {
-  .graph-section,
+  .landing > .article-timeline-mini,
   .about-this-blog {
     width: 90%;
-  }
-
-  .graph-section,
-  .graph-section svg {
-    min-height: 28rem;
   }
 
   .about-this-blog {
@@ -239,14 +249,9 @@ pre, code {
 }
 
 @media (max-width: 580px) {
-  .graph-section,
+  .landing > .article-timeline-mini,
   .about-this-blog {
     width: 100%;
-  }
-
-  .graph-section,
-  .graph-section svg {
-    min-height: 24rem;
   }
 
   .about-this-blog {
@@ -264,12 +269,60 @@ main {
 
 .content-area {
   flex-grow: 1; /* Allows it to take up available space */
-  flex-basis: 75%; /* Set a base width on desktop */
+  flex-basis: 77%; /* Set a base width on desktop */
+}
+
+/* compact "context strip" above the title: the full article history,
+   colored by category, with the current article picked out */
+.article-timeline-mini {
+  margin-bottom: 3rem;
+}
+
+.article-timeline-mini .timeline-section {
+  width: 100%;
+  min-height: 24rem;
+}
+
+@media (max-width: 950px) {
+  .article-timeline-mini .timeline-section {
+    min-height: 19rem;
+  }
+}
+
+@media (max-width: 580px) {
+  .article-timeline-mini .timeline-section {
+    min-height: 16rem;
+  }
+}
+
+/* static category overview embedded in the "What are you writing about?"
+   Q&A answer - a bit more generous since it's the only chart on the page */
+.network-graph-embed {
+  margin: 1.5rem 0;
+}
+
+.network-graph-embed svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 24rem;
+}
+
+@media (max-width: 950px) {
+  .network-graph-embed svg {
+    min-height: 18rem;
+  }
+}
+
+@media (max-width: 580px) {
+  .network-graph-embed svg {
+    min-height: 14rem;
+  }
 }
 
 .toc-area {
   flex-grow: 0;
-  flex-basis: 25%; /* Set a base width on desktop */
+  flex-basis: 23%; /* Set a base width on desktop */
   position: sticky;
   top: 50px;
   z-index: 1;
@@ -337,7 +390,7 @@ main {
 .article-list {
   position: relative;
   top: 10rem;
-  width: 75%; /* same right-hand gutter cascade as .content-area/.toc-area on article pages */
+  width: 77%; /* same right-hand gutter cascade as .content-area/.toc-area on article pages */
 }
 
 @media (max-width: 950px) {
@@ -354,31 +407,44 @@ main {
 
 .timeline-section {
   width: 100%;
-  min-height: 26rem;
+  min-height: 30rem;
 }
 
 @media (max-width: 950px) {
   .timeline-section {
-    min-height: 22rem;
+    min-height: 25rem;
   }
 }
 
 @media (max-width: 580px) {
   .timeline-section {
-    min-height: 20rem;
+    min-height: 22rem;
   }
 }
 
 .single {
   position: relative;
-  top: 12rem;
+  top: 4.5rem;
 }
 
 .single .headline {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
   padding: 0;
   margin: 0;
   font-size: large;
   color: var(--h1)
+}
+
+@media (max-width: 580px) {
+  .single .headline {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .single h2, h3, h4, h5, h6 {
