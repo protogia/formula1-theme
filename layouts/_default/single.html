@@ -4,14 +4,20 @@
 
 {{ partial "head.html" . }}
 
+  <script src="https://cdn.plot.ly/plotly-3.1.2.min.js" defer></script>
+
   <body>
-    
+
     {{ partial "header.html" . }}
 
     <main role="main" class="single">
       <div class="content-area">
+        <div class="article-timeline-mini">
+          <div id="article-mini-timeline" class="timeline-section" data-timeline data-source="site-articles-data" data-current-url="{{ .RelPermalink }}"></div>
+        </div>
+
         <span class="meta">
-        <h2 class="headline" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+        <h2 class="headline">
           <span>{{ .Title }}{{ if .Draft }} (draft){{ end }}</span>
 
           {{ if .Params.colab_url }}
@@ -32,7 +38,7 @@
           </div>
           {{ end }}
         </h2>
-                
+
         <span class="meta">
           {{ if not .Date.IsZero }}
           <span class="key">date:</span>
@@ -40,8 +46,6 @@
           {{ end }}
         </span>
 
-        
-        <br>
         <br>
 
         {{ .Content }}
@@ -70,11 +74,11 @@
         // 2. Logic to toggle visibility AND expansion
         function updateCodeVisibility() {
           const allDetails = contentArea.querySelectorAll('details');
-          
+
           if (toggle.checked) {
             // SHOW: Remove the hiding class
             contentArea.classList.remove('no-code-allowed');
-            
+
             // EXPAND: Open all details blocks
             allDetails.forEach(detail => {
               detail.setAttribute('open', 'true');
@@ -82,8 +86,8 @@
           } else {
             // HIDE: Add the hiding class (hides code + tagged headings)
             contentArea.classList.add('no-code-allowed');
-            
-            // OPTIONAL: Collapse them when hidden so they are 'closed' 
+
+            // OPTIONAL: Collapse them when hidden so they are 'closed'
             // if the user turns the switch back on later.
             allDetails.forEach(detail => {
               detail.removeAttribute('open');
@@ -98,5 +102,7 @@
         toggle.addEventListener('change', updateCodeVisibility);
       });
     </script>
+
+    <script src="{{ "js/article-timeline.js" | relURL }}" defer></script>
   </body>
 </html>

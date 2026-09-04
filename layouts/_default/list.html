@@ -8,6 +8,7 @@
       "url" $url
       "date" (.Date.Format "2006-01-02")
       "words" .WordCount
+      "categories" (.Params.categories | default slice)
   ) }}
 {{ end }}
 
@@ -22,7 +23,7 @@
   {{ partial "header.html" . }}
 
   <main role="main" class="article-list">
-    <div id="article-timeline" class="timeline-section"></div>
+    <div id="article-timeline" class="timeline-section" data-timeline data-source="timeline-data"></div>
     <script type="application/json" id="timeline-data">{{ $items | jsonify | safeJS }}</script>
   </main>
 
