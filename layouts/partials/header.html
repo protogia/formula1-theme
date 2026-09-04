@@ -31,6 +31,9 @@
         </svg>
       </a>
       {{ end }}
+      <a href="{{ "aboutthisblog" | relURL }}" class="badge badge-qa" aria-label="Q&amp;A">
+        {{ with resources.Get "icons/qa.svg" }}{{ .Content | safeHTML }}{{ end }}
+      </a>
     </div>
   </div>
 </header>
