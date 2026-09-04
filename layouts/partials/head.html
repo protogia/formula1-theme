@@ -23,4 +23,19 @@
     </style>
     <!-- <link rel="stylesheet" href="/css/f1-syntax.css" type="text/css"> -->
     <title>{{ with .Title }}{{.}} - {{ end }}{{ .Site.Title }}</title>
+
+    {{/* Single sitewide dataset (title/url/date/word count/categories per article),
+         so the timeline + network-graph components can derive nodes, co-occurrence
+         edges and colors client-side without any per-template Hugo aggregation. */}}
+    {{ $items := slice }}
+    {{ range where site.RegularPages "Section" "in" (slice "blog" "projects") }}
+      {{ $items = $items | append (dict
+          "title" .Title
+          "url" (.Params.redirectlink | default .RelPermalink)
+          "date" (.Date.Format "2006-01-02")
+          "words" .WordCount
+          "categories" (.Params.categories | default slice)) }}
+    {{ end }}
+    <script type="application/json" id="site-articles-data">{{ $items | jsonify | safeJS }}</script>
+    <script src="{{ "js/category-colors.js" | relURL }}" defer></script>
 </head>
