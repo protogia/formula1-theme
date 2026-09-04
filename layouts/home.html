@@ -1,12 +1,5 @@
 {{ $baseurl := .Site.BaseURL }}
 
-{{ $nodes := slice }}
-{{ range $term, $weighted := .Site.Taxonomies.categories }}
-  {{ with $.Site.GetPage (printf "/categories/%s" $term) }}
-    {{ $nodes = $nodes | append (dict "label" .Title "url" .RelPermalink "count" (len $weighted)) }}
-  {{ end }}
-{{ end }}
-
 <!DOCTYPE html>
 <html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
 
@@ -20,20 +13,20 @@
 
         <main role="main" class="landing">
 
-            <section class="graph-section">
-                <svg id="network-graph" role="img" aria-label="Category network graph" data-hub-label="{{ .Site.Title }}"></svg>
-                <script type="application/json" id="graph-data">{{ $nodes | jsonify | safeJS }}</script>
-            </section>
+            {{/* Same wrapper class as the article page's mini timeline, sized and
+                 positioned identically, so clicking a bubble into an article
+                 doesn't visually shift/resize the chart underfoot. */}}
+            <div class="article-timeline-mini">
+                <div id="home-timeline" class="timeline-section" data-timeline data-source="site-articles-data"></div>
+            </div>
 
             <section class="about-this-blog">
-                {{ with .Site.GetPage "aboutthisblog" }}
-                    {{ range .Pages.ByDate }}
-                        <h3>
-                            <span>{{ .Title }}{{ if .Draft }} (draft){{ end }}</span>
-                        </h3>
+                {{ with .Site.GetPage "aboutthisblog/about" }}
+                    <h3>
+                        <span>{{ .Title }}{{ if .Draft }} (draft){{ end }}</span>
+                    </h3>
 
-                        {{ .Content }}
-                    {{ end }}
+                    {{ .Content }}
                 {{ end }}
             </section>
 
@@ -41,7 +34,7 @@
 
         {{ partial "footer.html" . }}
 
-        <script src="{{ "js/network-graph.js" | relURL }}" defer></script>
+        <script src="{{ "js/article-timeline.js" | relURL }}" defer></script>
 
     </body>
 </html>
